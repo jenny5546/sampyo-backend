@@ -148,7 +148,7 @@ def render_prediction(request):
         new_input_image = InputImage.objects.create(photo=decoded_raw_image, saved_file_name=file_name)
 
         image_file_path = os.path.join(settings.MEDIA_ROOT, "input_image/%s" %(file_name))
-        weight_file_path = os.path.join(settings.MEDIA_ROOT, "weights/%s" %('2_largfac.hdf5'))
+        weight_file_path = os.path.join(settings.WEIGHT_ROOT, "%s" %('2_largfac.hdf5'))
 
         # Rotate Image Before predicting 
         original_photo = BytesIO(new_input_image.photo.read())
