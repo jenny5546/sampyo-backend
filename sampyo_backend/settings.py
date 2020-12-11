@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-# WSGI_APPLICATION = 'sampyo_backend.wsgi.application'
+WSGI_APPLICATION = 'sampyo_backend.wsgi.application'
 
 
 # Database
