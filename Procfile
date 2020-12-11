@@ -1,0 +1,1 @@
+web: gunicorn sampyo_backend.wsgi --log-file -
