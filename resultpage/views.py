@@ -51,6 +51,9 @@ def index(request):
 # Autocrop handler method
 @csrf_exempt
 def crop_image(raw_image, file_name):
+    
+    processed_image_folder_path = os.path.join(settings.MEDIA_ROOT, "processed_image")
+    os.makedirs(processed_image_folder_path, exist_ok=True)
     raw_file_path = os.path.join(settings.MEDIA_ROOT, "raw_image/%s" %(file_name))
     processed_file_path = os.path.join(settings.MEDIA_ROOT, "processed_image/%s" %(file_name))
     img = Image.open(raw_file_path)
@@ -60,7 +63,6 @@ def crop_image(raw_image, file_name):
 
     f, e = os.path.splitext(processed_file_path)
 
-    print('image recieved', raw_file_path, img)
     print('width',width, 'height', height)
 
     croppedImg = None
@@ -91,8 +93,6 @@ def crop_image(raw_image, file_name):
     new_processed_image.raw_image = raw_image
     new_processed_image.save()
 
-    print('new_procesed', new_processed_image)
-
     return new_processed_image
 
 
@@ -119,7 +119,6 @@ def auto_crop(request):
             context = {'img': encoded_string.decode('utf8')}
             context = json.dumps(context)
 
-            print('context', context)
             return HttpResponse(status=200, content=context)
     else:
         return HttpResponseNotAllowed(['POST'])
