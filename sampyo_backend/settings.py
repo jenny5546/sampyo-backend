@@ -29,7 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '192.168.35.210',
     '192.168.35.157',
-    'fierce-gorge-37466.herokuapp.com',
+    'shielded-sierra-26661.herokuapp.com',
 ]
 
 
